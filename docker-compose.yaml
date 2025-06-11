@@ -28,6 +28,8 @@ services:
       - ./nginx:/etc/nginx/conf.d
       - ./wordpress-files:/var/www/html
       - ./logs/nginx:/var/log/nginx
+    links:
+      - wordpress
 
   mariadb:
     image: mariadb:11
