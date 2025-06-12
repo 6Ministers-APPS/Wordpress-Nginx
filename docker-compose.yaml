@@ -68,18 +68,6 @@ services:
     networks:
       - wp_network
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    environment:
-      - PMA_HOST=mariadb
-      - PMA_PORT=3306
-      - PMA_ARBITRARY=1
-      - MYSQL_ROOT_PASSWORD
-    depends_on:
-      - mariadb
-    networks:
-      - wp_network
-
 networks:
   wp_network:
       
