@@ -5,7 +5,7 @@
 
 services:
   wordpress:
-    image: wordpress:php8.4-fpm-alpine
+    image: wordpress:latest
     volumes:
       - ./wordpress-files:/var/www/html
       - ./php.ini:/usr/local/etc/php/php.ini
