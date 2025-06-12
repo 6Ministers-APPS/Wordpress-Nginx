@@ -71,7 +71,7 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     environment:
-      - PMA_HOS=mariadb
+      - PMA_HOST=mariadb
       - PMA_PORT=3306
       - PMA_ARBITRARY=1
       - MYSQL_ROOT_PASSWORD
