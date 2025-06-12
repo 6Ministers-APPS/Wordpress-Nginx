@@ -75,11 +75,14 @@ services:
       - PMA_PORT=3306
       - PMA_ARBITRARY=1
       - MYSQL_ROOT_PASSWORD
+    ports:
+      - "8081:80"      
     depends_on:
       - mariadb
     networks:
       - wp_network
-
+volumes:
+  - pma_data:/var/www/html
 
 networks:
   wp_network:
