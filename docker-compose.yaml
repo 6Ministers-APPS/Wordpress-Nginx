@@ -8,6 +8,7 @@ services:
     image: wordpress:php8.4-fpm-alpine
     volumes:
       - ./wordpress-files:/var/www/html
+      - ./php.ini:/usr/local/etc/php/php.ini
     environment:
       - SERVICE_FQDN_WORDPRESS
       - WORDPRESS_DB_HOST=mariadb
@@ -23,7 +24,6 @@ services:
       retries: 10
     networks:
       - wp_network
-
 
   nginx:
     image: nginx:latest
@@ -67,6 +67,19 @@ services:
       retries: 5
     networks:
       - wp_network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_HOS=mariadb
+      - PMA_PORT=3306
+      - PMA_ARBITRARY=1
+      - MYSQL_ROOT_PASSWORD
+    depends_on:
+      - mariadb
+    networks:
+      - wp_network
+
 
 networks:
   wp_network:
