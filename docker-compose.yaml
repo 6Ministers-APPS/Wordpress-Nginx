@@ -81,8 +81,6 @@ services:
       - mariadb
     networks:
       - wp_network
-volumes:
-  - pma_data:/var/www/html
 
 networks:
   wp_network:
