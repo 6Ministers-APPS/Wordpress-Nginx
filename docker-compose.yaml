@@ -21,6 +21,9 @@ services:
       interval: 2s
       timeout: 10s
       retries: 10
+    networks:
+      - wp_network
+
 
   nginx:
     image: nginx:latest
@@ -28,9 +31,11 @@ services:
       - ./nginx:/etc/nginx/conf.d
       - ./wordpress-files:/var/www/html
       - ./logs/nginx:/var/log/nginx
-    links:
+    depends_on:
       - wordpress
-
+    networks:
+      - wp_network
+      
   mariadb:
     image: mariadb:11
     volumes:
@@ -45,7 +50,9 @@ services:
       interval: 5s
       timeout: 20s
       retries: 10
-
+    networks:
+      - wp_network
+      
   redis:
     image: redis:latest
     ports:
@@ -58,3 +65,9 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
+    networks:
+      - wp_network
+
+networks:
+  wp_network:
+      
