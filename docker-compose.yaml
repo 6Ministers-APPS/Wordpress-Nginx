@@ -75,8 +75,6 @@ services:
       - PMA_PORT=3306
       - PMA_ARBITRARY=1
       - MYSQL_ROOT_PASSWORD
-    ports:
-      - "8080:80"
     depends_on:
       - mariadb
     networks:
